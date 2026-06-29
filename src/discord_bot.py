@@ -1,16 +1,15 @@
 import discord
 import asyncio
-
-from config import DISCORD_TOKEN, CHANNEL_ID
+from config import DISCORD_TOKEN
 
 intents = discord.Intents.default()
 
 client = discord.Client(intents=intents)
 
 
-async def enviar_promocao(produto):
+async def enviar_promocao(produto, channel_id):
 
-    canal = client.get_channel(CHANNEL_ID)
+    canal = client.get_channel(channel_id)
 
     if canal:
 

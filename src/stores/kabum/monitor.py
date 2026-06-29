@@ -3,7 +3,7 @@ from stores.amazon.product import buscar_produto
 from database.comandos.sql import *
 import traceback
 
-def monitorar_amazon(driver):
+def monitorar_kabum(driver):
 
     novos = []
 
@@ -12,10 +12,7 @@ def monitorar_amazon(driver):
     for url in urls:
         try:
 
-            produto = buscar_produto(driver, url)
-            if produto is None:
-                continue
-
+            produto = buscar_produto(driver)
             # print(f"Produto encontrado: {produto['titulo']} - R$ {produto['preco']} - {produto['url']} - {produto['desconto']}  - {produto['foto']} - {produto['preco_total']}")
             existente = get_product_by_url(url)
 
@@ -26,7 +23,7 @@ def monitorar_amazon(driver):
                     novos.append(produto)
 
             else:
-                insert_product(produto)
+                insert_product(  produto["url"],  produto["titulo"], produto["preco"] )
                 novos.append(produto)
 
         except Exception as erro:

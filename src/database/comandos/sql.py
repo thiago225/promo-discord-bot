@@ -13,11 +13,20 @@ def connect_db():
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
     return conn
-def insert_product(url, title, last_price):
+def insert_product(produto):
     conn = connect_db()
 
+    url = produto["url"]
+    title = produto["titulo"]
+    last_price = produto["preco"]
+
+    store = produto["store"]    
+    desconto = produto["desconto"]
+    preco_total = produto["preco_total"]
+
+
     cursor = conn.cursor()
-    cursor.execute(""" INSERT INTO products (url, title, last_price) VALUES (?, ?, ?) """, (url, title, last_price))
+    cursor.execute(""" INSERT INTO products (url, title, last_price, store, desconto, preco_total, created_at) VALUES (?, ?, ?, ?, ?, ?, ?) """, (url, title, last_price, store, desconto, preco_total, "now()"))
     conn.commit()
     conn.close()
 
