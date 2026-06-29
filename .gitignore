@@ -1,0 +1,5 @@
+.env
+src/__Pycache__/*
+src/amazon/__Pycache__/*
+src/database/comandos/__Pycache__/*
+src/database/database.db
