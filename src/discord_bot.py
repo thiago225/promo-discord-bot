@@ -34,11 +34,11 @@ async def enviar_promocao(produto, channel_id):
             inline=True
         )
 
-        embed.add_field(
-            name="📉 Preço anterior",
-            value=produto["preco_total"],
-            inline=False
-        )
+        # embed.add_field(
+        #     name="📉 Preço anterior",
+        #     value=produto["preco_total"],
+        #     inline=False
+        # )
 
         embed.set_footer(
             text="Monitor de promoções Amazon"

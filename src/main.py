@@ -34,6 +34,7 @@ async def verificar():
                 if monitor_fn is None:
                     raise ValueError(f"Monitor não encontrado: {store['monitor']}")
 
+                print(f"Monitorando {store['name']}...")
                 produtos = await asyncio.to_thread(monitor_fn, driver)
 
                 # envia no discord
@@ -45,6 +46,7 @@ async def verificar():
             print(erro)
         finally:
             driver.quit()
+            print("Aguardando 30 minutos para próxima verificação...")
 
         await asyncio.sleep(1800)
 
